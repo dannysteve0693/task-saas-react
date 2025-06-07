@@ -38,7 +38,6 @@ createRoot(document.getElementById('root')!).render(
         },
       }}
       publishableKey={PUBLISHABLE_KEY}
-      afterSignOutUrl='/'
     >
       <RouterProvider router={router} />
     </ClerkProvider>
