@@ -34,6 +34,8 @@ import {
   TooltipContent,
 } from '@/components/ui/tooltip';
 
+import TaskFormDialog from './TaskFormDialog';
+
 const AppSidebar = () => {
   return (
     <Sidebar>
@@ -50,9 +52,11 @@ const AppSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton className='!text-primary'>
-                  <CirclePlus /> Add Task
-                </SidebarMenuButton>
+                <TaskFormDialog>
+                  <SidebarMenuButton className='!text-primary'>
+                    <CirclePlus /> Add Task
+                  </SidebarMenuButton>
+                </TaskFormDialog>
               </SidebarMenuItem>
 
               {SIDEBAR_LINKS.map((item, index) => (
