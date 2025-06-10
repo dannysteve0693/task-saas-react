@@ -8,10 +8,27 @@ import { startOfToday } from 'date-fns';
 
 import Taskform from '@/components/TaskForm';
 
+
 const TaskFormDialog: React.FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation();
   const fetcher = useFetcher();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const listener = (event: KeyboardEvent) => {
+      if (event.key === 'q') {
+        const target = event.target as HTMLElement;
+        if (target.localName === 'textarea') return;
+        event.preventDefault();
+        setOpen(true);
+      }
+    }
+
+    document.addEventListener('keydown', listener);
+    return () => {
+      document.removeEventListener('keydown', listener);
+    }
+  }, [])
 
   return (
     <Dialog

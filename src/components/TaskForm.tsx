@@ -98,6 +98,12 @@ const TaskForm: React.FC<TaskFormProps> = ({
           autoFocus
           value={taskContent}
           onInput={(e) => setTaskContent(e.currentTarget.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSubmit();
+            }
+          }}
         />
 
         <div className='ring-1 ring-border rounded-md max-w-max'>

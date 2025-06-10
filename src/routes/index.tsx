@@ -10,6 +10,7 @@ import LoginPage from '@/pages/LoginPage';
 import AuthSyncPage from '@/pages/AuthSyncPage';
 import AppLayout from '@/layouts/AppLayout';
 import InboxPage from '@/pages/InboxPage';
+import appAction from './actions/appAction';
 
 const rootRouteChildren: RouteObject[] = [
   {
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
     path: '/app',
     element: <AppLayout />,
     children: appRouteChildren,
+    action: appAction
   },
 ]);
 
