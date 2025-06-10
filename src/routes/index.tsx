@@ -12,6 +12,8 @@ import AppLayout from '@/layouts/AppLayout';
 import InboxPage from '@/pages/InboxPage';
 import appAction from './actions/appAction';
 
+import inboxTaskLoader from './loaders/inboxLoader';
+
 const rootRouteChildren: RouteObject[] = [
   {
     index: true,
@@ -34,6 +36,7 @@ const appRouteChildren: RouteObject[] = [
   {
     path: 'inbox',
     element: <InboxPage />,
+    loader: inboxTaskLoader,
   },
 ];
 
@@ -48,7 +51,7 @@ const router = createBrowserRouter([
     path: '/app',
     element: <AppLayout />,
     children: appRouteChildren,
-    action: appAction
+    action: appAction,
   },
 ]);
 
