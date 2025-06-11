@@ -22,11 +22,34 @@ const createTask = async (data: Task) => {
   }
 };
 
+const updateTask = async (data: Task) => {
+  const documentId = data.id;
+  if (!documentId) {
+    throw new Error('Task ID not found');
+  }
+  try {
+    return await databases.updateDocument(
+      APPWRITE_DATABASE_ID,
+      "tasks",
+      data.id || '',
+      {
+        data
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const appAction: ActionFunction = async ({ request }) => {
   const data = (await request.json()) as Task;
 
   if (request.method === 'POST') {
     return await createTask(data);
+  }
+
+  if (request.method === 'PUT') {
+    return await updateTask(data)
   }
 };
 
