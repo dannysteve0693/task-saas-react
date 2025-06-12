@@ -42,7 +42,7 @@ const TaskFormDialog: React.FC<PropsWithChildren> = ({ children }) => {
             content: '',
             due_date:
               location.pathname === '/app/today' ? startOfToday() : null,
-            projectId: null,
+            project: null,
           }}
           mode='create'
           onCancel={() => setOpen(false)}

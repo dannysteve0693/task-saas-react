@@ -11,7 +11,7 @@ const getTasks = async () => {
             'tasks',
             [
                 Query.equal('completed', false),
-                Query.isNull('projectId'),
+                Query.isNull('project'),
                 Query.equal('userId', getUserId())
             ]
         )

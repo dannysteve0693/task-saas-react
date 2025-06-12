@@ -27,14 +27,15 @@ const updateTask = async (data: Task) => {
   if (!documentId) {
     throw new Error('Task ID not found');
   }
+
+  delete data.id; // Remove id from data to avoid conflicts with Appwrite's document ID
+
   try {
     return await databases.updateDocument(
       APPWRITE_DATABASE_ID,
       "tasks",
-      data.id || '',
-      {
-        data
-      }
+      documentId,
+      data
     );
   } catch (error) {
     console.log(error);

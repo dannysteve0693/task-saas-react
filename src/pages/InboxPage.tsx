@@ -32,13 +32,13 @@ const InboxPage = () => {
           <PageTitle>Inbox</PageTitle>
         </PageHeader>
         <PageList>
-          {tasks.documents.map(({ $id, content, completed, due_date, projectId: project }) => (
+          {tasks.documents.map(({ $id, content, completed, due_date, project }) => (
             <TaskCard
               key={$id}
               id={$id}
               content={content}
               completed={completed}
-              due_date={due_date}
+              dueDate={due_date}
               project={project}
 
             />
