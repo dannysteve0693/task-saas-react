@@ -13,6 +13,8 @@ import InboxPage from '@/pages/InboxPage';
 import appAction from './actions/appAction';
 
 import inboxTaskLoader from './loaders/inboxLoader';
+import TodayTaskPage from '@/pages/TodayTaskPage';
+import todayTaskLoader from './loaders/todayTaskLoader';
 
 const rootRouteChildren: RouteObject[] = [
   {
@@ -38,6 +40,11 @@ const appRouteChildren: RouteObject[] = [
     element: <InboxPage />,
     loader: inboxTaskLoader,
   },
+  {
+    path: 'today',
+    element: <TodayTaskPage />,
+    loader: todayTaskLoader
+  }
 ];
 
 const router = createBrowserRouter([

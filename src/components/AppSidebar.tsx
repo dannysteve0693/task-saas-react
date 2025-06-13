@@ -15,13 +15,14 @@ import {
   SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import Logo from '@/components/Logo';
 import { UserButton } from '@clerk/clerk-react';
 
 import { CirclePlus, Plus, ChevronRight } from 'lucide-react';
 
 import { SIDEBAR_LINKS } from './constants';
+import { useSidebar } from '@/components/ui/sidebar';
 import {
   Collapsible,
   CollapsibleContent,
@@ -37,6 +38,10 @@ import {
 import TaskFormDialog from './TaskFormDialog';
 
 const AppSidebar = () => {
+  const location = useLocation();
+
+  const { isMobile, setOpenMobile } = useSidebar();
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -61,7 +66,15 @@ const AppSidebar = () => {
 
               {SIDEBAR_LINKS.map((item, index) => (
                 <SidebarMenuItem key={index}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={location.pathname === item.href}
+                    onClick={() => {
+                      if (isMobile) {
+                        setOpenMobile(false);
+                      }
+                    }}
+                  >
                     <Link to={item.href}>
                       <item.icon />
                       <span>{item.label}</span>
