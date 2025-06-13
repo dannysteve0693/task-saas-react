@@ -40,7 +40,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ id, content, completed, dueDate, pr
     const fetcher = useFetcher();
     const location = useLocation();
 
-    const fetcherTask = fetcher.json as Task;
+    const fetcherTask = fetcher.json as unknown as Task;
     console.log(fetcherTask);
 
     const task: Task = Object.assign({
