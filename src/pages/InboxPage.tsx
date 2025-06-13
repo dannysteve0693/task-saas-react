@@ -12,6 +12,7 @@ import TaskForm from '@/components/TaskForm';
 import TaskCard from '@/components/TaskCard';
 
 import type { Models } from 'appwrite';
+import TaskCardSkeleton from '@/components/TaskCardSkeleton';
 
 const InboxPage = () => {
   const fetcher = useFetcher();
@@ -43,6 +44,10 @@ const InboxPage = () => {
 
             />
           ))}
+
+          {fetcher.state !== 'idle' && (
+            <TaskCardSkeleton />
+          )}
 
 
           {!taskFormShow && (
