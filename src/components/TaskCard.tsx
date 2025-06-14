@@ -75,14 +75,17 @@ const TaskCard: React.FC<TaskCardProps> = ({ id, content, completed, dueDate, pr
                         aria-describedby='task-content'
                         onClick={async () => {
                             await handleTaskComplete(!task.completed);
-                            toast('1 task completed', {
-                                action: {
-                                    label: 'Undo',
-                                    onClick: () => {
-                                        handleTaskComplete(false);
+
+                            if (!task.completed) {
+                                toast('1 task completed', {
+                                    action: {
+                                        label: 'Undo',
+                                        onClick: () => {
+                                            handleTaskComplete(false);
+                                        },
                                     },
-                                },
-                            });
+                                });
+                            }
                         }}
                     >
                         <Check strokeWidth={4} className={cn('!w-3 !h-3 text-muted-foreground group-hover/button:opacity-100 transition-opacity', task.completed ? 'opacity-100' : 'opacity-0')} />

@@ -15,6 +15,10 @@ import appAction from './actions/appAction';
 import inboxTaskLoader from './loaders/inboxLoader';
 import TodayTaskPage from '@/pages/TodayTaskPage';
 import todayTaskLoader from './loaders/todayTaskLoader';
+import UpcomingTaskPage from '@/pages/UpcomingTaskPage';
+import upcomingTaskLoader from './loaders/upcomingTaskLoader';
+import CompletedTaskPage from '@/pages/CompletedTaskPage';
+import completedTaskLoader from './loaders/completedTaskLoader';
 
 const rootRouteChildren: RouteObject[] = [
   {
@@ -44,6 +48,16 @@ const appRouteChildren: RouteObject[] = [
     path: 'today',
     element: <TodayTaskPage />,
     loader: todayTaskLoader
+  },
+  {
+    path: 'upcoming',
+    element: <UpcomingTaskPage />,
+    loader: upcomingTaskLoader
+  },
+  {
+    path: 'completed',
+    element: <CompletedTaskPage />,
+    loader: completedTaskLoader
   }
 ];
 

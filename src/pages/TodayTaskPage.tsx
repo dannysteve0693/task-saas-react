@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import { useState } from 'react';
 import Head from '@/components/Head';
 
 import { useFetcher, useLoaderData } from 'react-router';
@@ -28,7 +28,7 @@ const TodayTaskPage = () => {
 
             <TopAppBar
                 title='Today'
-                taskCount={20}
+                taskCount={tasks.total}
             />
 
             <Page>

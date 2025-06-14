@@ -1,7 +1,7 @@
 import { getUserId } from '@/lib/utils';
 import type { LoaderFunction } from 'react-router';
 import { databases, Query } from '@/lib/appwrite';
-import { startOfToday, startOfTomorrow } from 'date-fns';
+import { startOfToday } from 'date-fns';
 
 const APPWRITE_DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 
@@ -12,24 +12,23 @@ const getTasks = async () => {
             'tasks',
             [
                 Query.equal('completed', false),
-                Query.and([
-                    Query.greaterThanEqual('due_date', startOfToday().toISOString()),
-                    Query.lessThan('due_date', startOfTomorrow().toISOString())
-                ]),
+                Query.isNotNull('due_date'),
+                Query.greaterThanEqual('due_date', startOfToday().toISOString()),
+                Query.orderAsc('due_date'),
                 Query.equal('userId', getUserId())
             ]
         )
     } catch (error) {
         console.log(error)
-        throw new Error('Error getting today tasks');
+        throw new Error('Error getting upcoming tasks');
 
     }
 }
 
-const todayTaskLoader: LoaderFunction = async () => {
+const upcomingTaskLoader: LoaderFunction = async () => {
     const tasks = await getTasks();
     console.log(tasks)
     return { tasks }
 };
 
-export default todayTaskLoader;
+export default upcomingTaskLoader;
