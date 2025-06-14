@@ -36,6 +36,7 @@ import {
 } from '@/components/ui/tooltip';
 
 import TaskFormDialog from './TaskFormDialog';
+import ProjectFormDialog from './ProjectFormDialog';
 
 const AppSidebar = () => {
   const location = useLocation();
@@ -100,11 +101,13 @@ const AppSidebar = () => {
             </SidebarGroupLabel>
 
             <Tooltip>
-              <TooltipTrigger asChild>
-                <SidebarGroupAction aria-label='Add project'>
-                  <Plus />
-                </SidebarGroupAction>
-              </TooltipTrigger>
+              <ProjectFormDialog method='POST'>
+                <TooltipTrigger asChild>
+                  <SidebarGroupAction aria-label='Add project'>
+                    <Plus />
+                  </SidebarGroupAction>
+                </TooltipTrigger>
+              </ProjectFormDialog>
               <TooltipContent side='right'>Add project</TooltipContent>
             </Tooltip>
 
