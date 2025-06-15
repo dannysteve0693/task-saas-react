@@ -16,7 +16,7 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger,
+
     AlertDialogCancel,
     AlertDialogAction
 } from './ui/alert-dialog'
