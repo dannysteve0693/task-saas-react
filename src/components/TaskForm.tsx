@@ -32,20 +32,20 @@ import {
 } from 'lucide-react';
 
 import type { ClassValue } from 'clsx';
-import type { TaskForm } from '@/types';
+import type { TaskFormData } from '@/types';
 import { useProjects } from '@/contexts/ProjectContext';
 
-import { Models } from 'appwrite';
+import type { Models } from 'appwrite';
 
 type TaskFormProps = {
-  defaultFormData?: TaskForm;
+  defaultFormData?: TaskFormData;
   className?: ClassValue;
   mode: 'create' | 'edit';
   onCancel?: () => void;
-  onSubmit?: (formData: TaskForm) => void;
+  onSubmit?: (formData: TaskFormData) => void;
 };
 
-const DEFAULT_FORM_DATA: TaskForm = {
+const DEFAULT_FORM_DATA: TaskFormData = {
   content: '',
   due_date: null,
   project: null,

@@ -14,7 +14,6 @@ import { Page, PageHeader, PageTitle, PageList } from '@/components/Page';
 import { Plus } from 'lucide-react';
 
 import type { Models } from 'appwrite';
-import ProjectForm from '@/components/ProjectForm';
 import ProjectCard from '@/components/ProjectCard';
 
 import type { SearchingState } from '@/components/ProjectSearchField';
@@ -34,7 +33,7 @@ const ProjectPage = () => {
 
   const [searchingState, setSearchingState] = useState<SearchingState>('idle');
 
-  const searchTimeout = useRef<NodeJS.Timeout>();
+  const searchTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleProjectSearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

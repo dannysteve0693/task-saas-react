@@ -5,7 +5,7 @@ type Project = {
   color_hex: string;
 };
 
-type ProjectForm = {
+type ProjectFormData = {
   id: string | null;
   name: string;
   color_name: string;
@@ -23,7 +23,7 @@ type Task = {
   userId: string;
 };
 
-type TaskForm = {
+type TaskFormData = {
   id?: string;
   content: string;
   due_date: Date | null;
@@ -31,4 +31,4 @@ type TaskForm = {
   project: string | null;
 };
 
-export type { Project, ProjectForm, Task, TaskForm };
+export type { Project, ProjectFormData, Task, TaskFormData };

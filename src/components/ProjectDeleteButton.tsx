@@ -23,7 +23,6 @@ import { toast } from 'sonner';
 import { Trash2 } from 'lucide-react';
 
 import type { Project } from '@/types';
-import { truncate } from 'fs';
 
 type ProjectDeleteButtonProps = {
   defaultFormData: Project;

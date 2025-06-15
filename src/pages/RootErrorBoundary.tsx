@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { isRouteErrorResponse, useRouteError, Link } from 'react-router';
 
 import { Button } from '@/components/ui/button';

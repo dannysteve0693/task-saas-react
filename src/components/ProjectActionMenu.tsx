@@ -43,7 +43,7 @@ const ProjectActionMenu: React.FC<ProjectActionMenuProps> = ({
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
-          <ProjectDeleteButton />
+          <ProjectDeleteButton defaultFormData={defaultFormData} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

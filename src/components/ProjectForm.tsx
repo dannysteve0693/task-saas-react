@@ -30,7 +30,7 @@ import { Circle, ChevronDown, Check, Bot } from 'lucide-react';
 
 import { PROJECT_COLORS } from './constants';
 
-import type { Project, ProjectForm } from '@/types';
+import type { Project, ProjectFormData } from '@/types';
 
 const DEFAULT_PROJECT_NAME = 'Untitled';
 const DEFAULT_PROJECT_COLOR_NAME = 'Slate';
@@ -47,7 +47,7 @@ type ProjectFormProps = {
   defaultFormData?: Project;
   mode: 'create' | 'edit';
   onCancel?: () => void;
-  onSubmit?: (formData: ProjectForm) => void;
+  onSubmit?: (formData: ProjectFormData) => void;
 };
 
 const ProjectForm: React.FC<ProjectFormProps> = ({
@@ -68,7 +68,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
   const [colorOpen, setColorOpen] = useState<boolean>(false);
   const [aiTaskGen, setAiTaskGen] = useState<boolean>(false);
   const [taskGenPrompt, setTaskGenPrompt] = useState<string>('');
-  const [formData, setFormData] = useState<ProjectForm>({
+  const [formData, setFormData] = useState<ProjectFormData>({
     ...defaultFormData,
     ai_task_gen: aiTaskGen,
     task_gen_prompt: taskGenPrompt,

@@ -28,7 +28,7 @@ const getProject = async (projectId: string) => {
 
 const projectDetailLoader: LoaderFunction = async ({ params }) => {
   const { projectId } = params as { projectId: string };
-  const project = await getProject();
+  const project = await getProject(projectId);
 
   return { project };
 };

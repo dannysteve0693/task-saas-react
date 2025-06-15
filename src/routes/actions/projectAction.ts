@@ -4,7 +4,7 @@ import { databases } from '@/lib/appwrite';
 import { generateID, getUserId } from '@/lib/utils';
 
 import type { ActionFunction } from 'react-router';
-import type { ProjectForm, Project } from '@/types';
+import type { ProjectFormData, Project } from '@/types';
 import type { Models } from 'appwrite';
 
 import { generateProjectTasks } from '@/api/googleAi';
@@ -16,7 +16,7 @@ type aiGenTask = {
   due_date: Date | null;
 };
 
-const createProject = async (data: ProjectForm) => {
+const createProject = async (data: ProjectFormData) => {
   let project: Models.Document | null = null;
   const aiTaskGen = data.ai_task_gen;
   const taskGenPrompt = data.task_gen_prompt;
@@ -113,7 +113,7 @@ const deleteProject = async (data: Project) => {
 
 const projectAction: ActionFunction = async ({ request }) => {
   const method = request.method;
-  const data = (await request.json()) as ProjectForm;
+  const data = (await request.json()) as ProjectFormData;
 
   if (method === 'POST') {
     return await createProject(data);
