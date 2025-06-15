@@ -13,6 +13,19 @@ import InboxPage from '@/pages/InboxPage';
 import appAction from './actions/appAction';
 
 import inboxTaskLoader from './loaders/inboxLoader';
+import TodayTaskPage from '@/pages/TodayTaskPage';
+import todayTaskLoader from './loaders/todayTaskLoader';
+import UpcomingTaskPage from '@/pages/UpcomingTaskPage';
+import upcomingTaskLoader from './loaders/upcomingTaskLoader';
+import CompletedTaskPage from '@/pages/CompletedTaskPage';
+import completedTaskLoader from './loaders/completedTaskLoader';
+import projectAction from './actions/projectAction';
+import ProjectPage from '@/pages/ProjectPage';
+import projectsLoader from './loaders/projectsLoader';
+import ProjectDetailPage from '@/pages/ProjectDetailPage';
+import projectDetailLoader from './loaders/projectDetailLoader';
+import appLoader from './loaders/appLoader';
+import ProjectErrorBoundary from '@/pages/ProjectErrorBoundary';
 
 const rootRouteChildren: RouteObject[] = [
   {
@@ -38,6 +51,33 @@ const appRouteChildren: RouteObject[] = [
     element: <InboxPage />,
     loader: inboxTaskLoader,
   },
+  {
+    path: 'today',
+    element: <TodayTaskPage />,
+    loader: todayTaskLoader,
+  },
+  {
+    path: 'upcoming',
+    element: <UpcomingTaskPage />,
+    loader: upcomingTaskLoader,
+  },
+  {
+    path: 'completed',
+    element: <CompletedTaskPage />,
+    loader: completedTaskLoader,
+  },
+  {
+    path: 'projects',
+    element: <ProjectPage />,
+    action: projectAction,
+    loader: projectsLoader,
+  },
+  {
+    path: 'projects/:projectId',
+    element: <ProjectDetailPage />,
+    loader: projectDetailLoader,
+    errorElement: <ProjectErrorBoundary />,
+  },
 ];
 
 const router = createBrowserRouter([
@@ -52,6 +92,7 @@ const router = createBrowserRouter([
     element: <AppLayout />,
     children: appRouteChildren,
     action: appAction,
+    loader: appLoader,
   },
 ]);
 
