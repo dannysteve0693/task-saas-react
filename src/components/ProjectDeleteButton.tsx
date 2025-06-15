@@ -33,12 +33,18 @@ const ProjectDeleteButton: React.FC<ProjectDeleteButtonProps> = ({
   defaultFormData,
 }) => {
   const fetcher = useFetcher();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toastId = toast('Deleting project...', {
     duration: Infinity,
   });
 
   const handleProjectDelete = useCallback(async () => {
+    if (location.pathname === `/app/projects/${defaultFormData.id}`) {
+      navigate('/app/inbox');
+    }
+
     try {
       await fetcher.submit(defaultFormData, {
         action: '/app/projects',

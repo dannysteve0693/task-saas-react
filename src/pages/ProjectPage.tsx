@@ -27,9 +27,10 @@ const SEARCH_TIMEOUT_DELAY = 500;
 
 const ProjectPage = () => {
   const fetcher = useFetcher();
+  const fetcherData = fetcher.data as DataType;
 
   const loaderData = useLoaderData() as DataType;
-  const { projects } = loaderData;
+  const { projects } = fetcherData || loaderData;
 
   const [searchingState, setSearchingState] = useState<SearchingState>('idle');
 
@@ -92,10 +93,19 @@ const ProjectPage = () => {
           <div className='h-8 flex items-center border-b'>
             <div className='text-sm'>{projects.total} projects</div>
           </div>
-          <div className=''>
+          <div className={cn(searchingState === 'searching' && 'opacity-25')}>
             {projects.documents.map((project) => (
-              <ProjectCard key={project.$id} />
+              <ProjectCard
+                key={project.$id}
+                project={project}
+              />
             ))}
+
+            {projects.total === 0 && (
+              <div className='h-14 flex justify-center items-center text-muted-foreground'>
+                No project found
+              </div>
+            )}
           </div>
         </PageList>
       </Page>
