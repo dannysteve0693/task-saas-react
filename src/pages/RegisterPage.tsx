@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Head from '@/components/Head';
 
 import { SignUp } from '@clerk/clerk-react';

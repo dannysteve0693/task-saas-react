@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import { useState } from 'react';
 import Head from '@/components/Head';
 
 import { useFetcher, useLoaderData } from 'react-router';
@@ -16,7 +16,9 @@ import TaskCardSkeleton from '@/components/TaskCardSkeleton';
 
 const InboxPage = () => {
   const fetcher = useFetcher();
-  const { tasks } = useLoaderData<{ tasks: Models.DocumentList<Models.Document> }>()
+  const { tasks } = useLoaderData<{
+    tasks: Models.DocumentList<Models.Document>;
+  }>();
   const [taskFormShow, setTaskFormShow] = useState(false);
 
   return (
@@ -33,22 +35,20 @@ const InboxPage = () => {
           <PageTitle>Inbox</PageTitle>
         </PageHeader>
         <PageList>
-          {tasks.documents.map(({ $id, content, completed, due_date, project }) => (
-            <TaskCard
-              key={$id}
-              id={$id}
-              content={content}
-              completed={completed}
-              dueDate={due_date}
-              project={project}
-
-            />
-          ))}
-
-          {fetcher.state !== 'idle' && (
-            <TaskCardSkeleton />
+          {tasks.documents.map(
+            ({ $id, content, completed, due_date, project }) => (
+              <TaskCard
+                key={$id}
+                id={$id}
+                content={content}
+                completed={completed}
+                dueDate={due_date}
+                project={project}
+              />
+            ),
           )}
 
+          {fetcher.state !== 'idle' && <TaskCardSkeleton />}
 
           {!taskFormShow && (
             <TaskCreateButton onClick={() => setTaskFormShow(true)} />

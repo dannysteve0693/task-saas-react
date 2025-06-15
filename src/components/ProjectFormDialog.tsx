@@ -4,9 +4,10 @@ import { useFetcher } from 'react-router';
 import { truncateString } from '@/lib/utils';
 
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
-import ProjectForm from './ProjectForm';
+// import type { ProjectForm } from '@/types';
 import type { Project } from '@/types';
 
+import ProjectForm from './ProjectForm';
 import { toast } from 'sonner';
 
 type ProjectFormDialogProps = {
@@ -35,21 +36,23 @@ const ProjectFormDialog: React.FC<ProjectFormDialogProps> = ({
           onCancel={() => setOpen(false)}
           onSubmit={async (data) => {
             setOpen(false);
-            const toastId = toast(`${method === "POST" ? "Creating" : "Updating"} project...`, {
-              duration: Infinity
-            })
+            const toastId = toast(
+              `${method === 'POST' ? 'Creating' : 'Updating'} project...`,
+              {
+                duration: Infinity,
+              },
+            );
             await fetcher.submit(JSON.stringify(data), {
               action: '/app/projects',
               method,
               encType: 'application/json',
             });
 
-            toast(`Project ${method === "POST" ? "created" : "updated"}`, {
-              description: `Project ${truncateString(data.name, 32)} ${data.ai_task_gen ? "and its tasks" : ""} have been successfully ${method === "POST" ? "created" : "updated"}.`,
+            toast(`Project ${method === 'POST' ? 'created' : 'updated'}`, {
+              description: `Project ${truncateString(data.name, 32)} ${data.ai_task_gen ? 'and its tasks' : ''} have been successfully ${method === 'POST' ? 'created' : 'updated'}.`,
               duration: 5000,
-              id: toastId
-            })
-
+              id: toastId,
+            });
           }}
         />
       </DialogContent>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Link, useLocation } from 'react-router';
 
 import Logo from '@/components/Logo';

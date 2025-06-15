@@ -1,5 +1,5 @@
 import { Input } from './ui/input';
-
+import { cn } from '@/lib/utils';
 import { Loader2, Search } from 'lucide-react';
 
 export type SearchingState = 'idle' | 'loading' | 'searching';

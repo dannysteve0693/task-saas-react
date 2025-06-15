@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet, useNavigation, useLoaderData } from 'react-router';
 import { cn } from '@/lib/utils';
 
@@ -8,7 +7,7 @@ import AppSidebar from '@/components/AppSidebar';
 import { Toaster } from '@/components/ui/sonner';
 import { ProjectProvider } from '@/contexts/ProjectContext';
 
-import { AppLoaderData } from '@/routes/loaders/appLoader';
+import type { AppLoaderData } from '@/routes/loaders/appLoader';
 
 const AppLayout = () => {
   const navigation = useNavigation();
